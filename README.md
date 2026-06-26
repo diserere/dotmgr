@@ -54,8 +54,10 @@ Read these files in order to recover full project context:
    Truth, and design decisions.
 3. [`docs/ROADMAP.md`](docs/ROADMAP.md) — current state and priorities.
 4. [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) — development process.
-5. [`docs/CONTEXT_AS_CODE.md`](docs/CONTEXT_AS_CODE.md) — Context-as-Code
-   philosophy and agent workflow.
+5. [`docs/AGENT_WORKFLOW.md`](docs/AGENT_WORKFLOW.md) — human↔agent workflow
+   policy and review cycle.
+6. [`docs/CONTEXT_AS_CODE.md`](docs/CONTEXT_AS_CODE.md) — Context-as-Code
+   philosophy.
 
 ## Contributing
 

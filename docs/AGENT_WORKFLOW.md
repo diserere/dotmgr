@@ -42,9 +42,10 @@ The human maintains ultimate control and may override any agent decision.
 ## Definition of Done for agent-authored PRs
 
 - All entry-point files (`README.md`, `docs/ARCHITECTURE.md`,
-  `docs/ROADMAP.md`, `docs/CONTRIBUTING.md`, `docs/CONTEXT_AS_CODE.md`) are
-  updated if the change affects project context.
+  `docs/ROADMAP.md`, `docs/CONTRIBUTING.md`, `docs/AGENT_WORKFLOW.md`,
+  `docs/CONTEXT_AS_CODE.md`) are kept in sync when the change affects project
+  context.
 - Commit messages follow Conventional Commits.
 - Documentation is in English.
-- A dry-run of any new `apply`/`sync` behavior is included in the change
+- A dry-run of any new `apply`/`sync` behavior is demonstrated in the change
   description.
