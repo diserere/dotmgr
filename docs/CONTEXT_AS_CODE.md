@@ -1,44 +1,34 @@
 # Context-as-Code
 
-## Определение
-Контекст проекта (архитектура, решения, ограничения, воркфлоу) хранится
-в репозитории как первоклассные артефакты — в виде версионируемых
-человекочитаемых файлов. Любой участник процесса (человек или AI-агент),
-входящий в репозиторий, читает эти файлы для восстановления полного контекста
-без внешних источников.
+## Definition
+Project context (architecture, decisions, constraints, workflows) is stored in the repository as first-class artifacts — as versioned, human-readable files. Any participant in the process (human or AI agent) entering the repository reads these files to reconstruct the full context without external sources.
 
-Термин шире, чем Documentation-as-Code: он включает не только проектную
-документацию, но и мета-информацию для агентов — намерения, ограничения,
-паттерны взаимодействия.
+This term is broader than Documentation-as-Code: it includes not only project documentation but also meta-information for agents — intentions, constraints, and interaction patterns.
 
-## Entry-point файлы (порядок чтения)
-1. `README.md` — что это, зачем, как запустить.
-2. `docs/ARCHITECTURE.md` — каркас системы и Source of Truth.
-3. `docs/ROADMAP.md` — текущее состояние и приоритеты.
-4. `docs/CONTRIBUTING.md` — процесс работы.
-5. `docs/CONTEXT_AS_CODE.md` — этот файл, философия и воркфлоу агентов.
+## Entry-point files (reading order)
+1. `README.md` — What is this, why does it exist, how to run it.
+2. `docs/ARCHITECTURE.md` — System skeleton and Source of Truth.
+3. `docs/ROADMAP.md` — Current state and priorities.
+4. `docs/CONTRIBUTING.md` — Working process.
+5. `docs/CONTEXT_AS_CODE.md` — This file, philosophy, and agent workflow.
 
-## Воркфлоу агентов: review → fix → re-review
-1. Агент-автор создаёт PR с изменениями.
-2. Агент-ревьюер проводит структурированный review с inline-комментариями,
-   промаркированными по осям (полнота / безопасность / архитектура / понятность).
-   Типы отзыва:
-   - `COMMENT` — рекомендация, PR можно мержить.
-   - `REQUEST_CHANGES` — блокирующее замечание, не мержить до исправления.
-3. Агент-автор читает комментарии, генерирует правки и пушит новые коммиты
-   в ту же ветку (или в производную ветку для A/B-сравнения).
-4. Агент-ревьюер проводит re-review по обновлённому diff.
-5. Цикл повторяется до снятия всех блокирующих замечаний.
+## Agent Workflow: review → fix → re-review
+1. The Author Agent creates a PR with changes.
+2. The Reviewer Agent conducts a structured review with inline comments, marked by axes (completeness / security / architecture / clarity).
+   Review types:
+   - `COMMENT` — recommendation, PR can be merged.
+   - `REQUEST_CHANGES` — blocking remark, do not merge until fixed.
+3. The Author Agent reads the comments, generates fixes, and pushes new commits to the same branch (or a derivative branch for A/B comparison).
+4. The Reviewer Agent conducts a re-review of the updated diff.
+5. The cycle repeats until all blocking remarks are resolved.
 
-## Роли и эскалация
-- **Агент-автор** — создаёт PR.
-- **Агент-ревьюер** — ставит COMMENT / REQUEST_CHANGES.
-- **Человек-MITM** — финальное слово: принимает PR, отклоняет,
-  или просит переделать. Может переопределить решение любого агента.
-- **Оркестратор (будущий)** — управляет циклом автоматически,
-  но делегирует финальное одобрение человеку.
+## Roles and Escalation
+- **Author Agent** — creates the PR.
+- **Reviewer Agent** — sets COMMENT / REQUEST_CHANGES.
+- **MITM Human** — final word: approves PR, rejects, or asks to redo. Can override any agent's decision.
+- **Orchestrator (future)** — manages the cycle automatically but delegates final approval to the human.
 
-## Принципы
-- Контекст в репозитории, а не в головах и не в чатах.
-- Файлы контекста — часть Definition of Done любого PR.
-- Агенты обязаны прочитать entry-point файлы перед любой не-read-only операцией.
+## Principles
+- Context in the repository, not in heads or chat histories.
+- Context files are part of the Definition of Done for any PR.
+- Agents are obligated to read entry-point files before any non-read-only operation.
