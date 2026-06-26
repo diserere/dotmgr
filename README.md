@@ -1,13 +1,22 @@
-# Project Documentation
+# Dotfile Manager (dotmgr)
 
-## Context
-This project follows the **Context-as-Code** philosophy: architecture, decisions,
-constraints, and agent workflows live in the repository as first-class,
-versioned artifacts. See [`docs/CONTEXT_AS_CODE.md`](docs/CONTEXT_AS_CODE.md).
+A declarative, idempotent system for managing user dotfiles, packages, and custom scripts across Linux environments.
 
-## Entry-point files (read in this order)
-1. `README.md` — this file.
-2. [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — system skeleton and Source of Truth.
-3. [`docs/ROADMAP.md`](docs/ROADMAP.md) — current state and priorities.
-4. [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) — development process.
-5. [`docs/CONTEXT_AS_CODE.md`](docs/CONTEXT_AS_CODE.md) — philosophy and agent workflow.
+## Quick Start
+1. **Bootstrap:** 
+   `wget -qO- https://raw.githubusercontent.com/my-tool/engine/main/bootstrap.sh | sh`
+2. **Setup:**
+   `dotmgr init --config <YOUR_PRIVATE_REPO_URL>`
+3. **Configure:**
+   `dotmgr setup`
+
+## Core Philosophy
+- **Context-as-Code:** All architectural decisions, constraints, and workflows are stored as first-class, versioned artifacts within the repository.
+- **Security:** Public engine, private configuration. Sensitive data (secrets) MUST NOT be committed to the repository.
+- **Source of Truth:** The `manifest.yaml` (Desired State) is the absolute source of truth.
+
+## Documentation
+- [Architecture](docs/ARCHITECTURE.md)
+- [Roadmap](docs/ROADMAP.md)
+- [Contributing](docs/CONTRIBUTING.md)
+- [Context-as-Code Philosophy](docs/CONTEXT_AS_CODE.md)

@@ -10,6 +10,9 @@
   - `docs/<doc-name>`
   - `fix/<issue-name>`
 - **Commits:** Conventional Commits specification (e.g., `feat: add cli boilerplate`).
+- **AI Collaboration:** For commits involving AI-generated code/logic, include the trailer: 
+  `Co-Authored-By: <AgentName> <noreply@example.com>`
+
 - **Merging:** Use fast-forward (`--ff-only`) locally to maintain a clean linear history. Avoid merge commits.
 
 ## Versioning
