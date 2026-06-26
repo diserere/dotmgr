@@ -14,4 +14,9 @@
 
 ## Versioning
 - Use Semantic Versioning (SemVer) for the project.
-- **Agent Workflow:** The agent autonomously executes changes (e.g., git operations, file writes) after reaching a strategic consensus with the human. The agent is responsible for creating descriptive, high-quality commit messages and maintaining project documentation. The human maintains ultimate control by approving all non-read-only actions via the tool execution prompt.
+
+## Agent Workflow
+
+The policy for human↔agent collaboration (review cycle, roles, escalation,
+Definition of Done for agent-authored PRs) lives in
+[`docs/AGENT_WORKFLOW.md`](docs/AGENT_WORKFLOW.md).
