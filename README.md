@@ -1,13 +1,65 @@
-# Project Documentation
+# ai-dotfiles
 
-## Context
-This project follows the **Context-as-Code** philosophy: architecture, decisions,
-constraints, and agent workflows live in the repository as first-class,
-versioned artifacts. See [`docs/CONTEXT_AS_CODE.md`](docs/CONTEXT_AS_CODE.md).
+A declarative, idempotent dotfile manager that stores architecture, decisions,
+and agent workflows as first-class, versioned artifacts in the repository
+(Context-as-Code).
 
-## Entry-point files (read in this order)
+## What this is
+
+A CLI tool (`dotmgr`) that uses GNU Stow to manage user dotfiles, packages,
+and custom scripts across Linux environments. It follows a **Public Engine /
+Private Configuration** split: the engine and documentation live in a public
+repository, while host-specific and user-specific configuration lives in a
+separate private repository.
+
+The project is designed to be driven by AI agents as well as humans: every
+architectural constraint, decision, and workflow policy is documented inside
+the repo itself, so an agent can recover full context without external sources.
+
+## Why
+
+- Reproducible Linux environments across reinstalls and machines.
+- Declarative manifests instead of imperative setup scripts.
+- Context lives next to code, so agents and collaborators share the same
+  constraints.
+
+## Status
+
+This is pre-Alpha. The current repository contains architecture, a roadmap,
+and contribution guidelines only — no engine code yet. See
+[`docs/ROADMAP.md`](docs/ROADMAP.md) for planned phases.
+
+## Requirements
+
+- Linux (Ubuntu is the primary target; see ROADMAP for other platforms).
+- Python 3.10+ (for the CLI).
+- GNU Stow (for symlink management).
+
+## Quick start
+
+Until Phase 1 delivers the `dotmgr` CLI, the repository is documentation-only.
+To read the project context:
+
+1. Clone this repository.
+2. Read the entry-point files in order (see below).
+
+When the CLI lands, installation will be documented here.
+
+## Documentation
+
+Read these files in order to recover full project context:
+
 1. `README.md` — this file.
-2. [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — system skeleton and Source of Truth.
+2. [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — system skeleton, Source of
+   Truth, and design decisions.
 3. [`docs/ROADMAP.md`](docs/ROADMAP.md) — current state and priorities.
 4. [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) — development process.
-5. [`docs/CONTEXT_AS_CODE.md`](docs/CONTEXT_AS_CODE.md) — philosophy and agent workflow.
+5. [`docs/AGENT_WORKFLOW.md`](docs/AGENT_WORKFLOW.md) — agent collaboration
+   policy and review cycle.
+6. [`docs/CONTEXT_AS_CODE.md`](docs/CONTEXT_AS_CODE.md) — Context-as-Code
+   philosophy.
+
+## Contributing
+
+See [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for branching, commit,
+and language conventions.
