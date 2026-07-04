@@ -25,6 +25,9 @@
 
 - Use [Semantic Versioning](https://semver.org) (SemVer) for the project.
 
+## Review Provenance
+All PR review comments must be marked with a prefix (e.g., [agent-review], [human-review]).
+
 ## Agent Workflow
 
 The agent collaboration policy (human-in-the-loop, review cycle, roles, and the

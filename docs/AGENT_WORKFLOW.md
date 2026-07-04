@@ -53,3 +53,9 @@ The human maintains ultimate authority and may override any agent decision.
 - Documentation is in English.
 - A dry-run of any new `apply`/`sync` behavior is included in the change
   description.
+
+## Review Provenance
+All PR review comments (from AI or Human) MUST be marked with a prefix:
+- `[agent-review]`
+- `[human-review]`
+

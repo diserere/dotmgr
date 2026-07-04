@@ -16,11 +16,11 @@ files to reconstruct the full context without external sources.
 ## Entry-point files (read in this order)
 
 1. `README.md` — what this is, why it exists, how to get started.
-2. [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — system skeleton and Source
+2. [`ARCHITECTURE.md`](ARCHITECTURE.md) — system skeleton and Source
    of Truth.
-3. [`docs/ROADMAP.md`](docs/ROADMAP.md) — current state and priorities.
-4. [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) — development process.
-5. [`docs/AGENT_WORKFLOW.md`](docs/AGENT_WORKFLOW.md) — agent collaboration
+3. [`ROADMAP.md`](ROADMAP.md) — current state and priorities.
+4. [`CONTRIBUTING.md`](CONTRIBUTING.md) — development process.
+5. [`AGENT_WORKFLOW.md`](AGENT_WORKFLOW.md) — agent collaboration
    policy and review cycle.
 6. `docs/CONTEXT_AS_CODE.md` — this file.
 
