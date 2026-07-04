@@ -1,4 +1,4 @@
-# ai-dotfiles
+# Dotfile Manager (dotmgr)
 
 A declarative, idempotent dotfile manager that stores architecture, decisions,
 and agent workflows as first-class, versioned artifacts in the repository
