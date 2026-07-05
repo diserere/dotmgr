@@ -15,9 +15,10 @@
   [Conventional Commits](https://www.conventionalcommits.org) specification
   (e.g. `feat(cli): add init command`).
 - **Co-authorship:** every commit authored with agent assistance carries a
-  `Co-Authored-By` trailer naming the model that assisted, e.g.
-  `Co-Authored-By: Claude <noreply@anthropic.com>`. This is required, not
-  optional, so the provenance of agent-assisted work is always auditable.
+  `Co-Authored-By` trailer naming the model that assisted and its assigned role,
+  e.g. `Co-Authored-By: Claude <noreply@anthropic.com> [Role: Author]`.
+  This is required, not optional, so the provenance and responsibility of
+  agent-assisted work is always auditable.
 - **Merging:** use fast-forward (`--ff-only`) locally to maintain a clean
   linear history. Avoid merge commits.
 
