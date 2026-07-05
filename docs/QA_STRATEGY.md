@@ -18,7 +18,6 @@ This document outlines the testing approach for the dotfile manager, ensuring ro
    - Strategy: Automated CI/CD pipelines MUST execute `dotmgr sync --dry-run` before any real `apply` is performed. This validates that the manifest configuration is syntactically correct and Stow can resolve the symlinks.
 
 ## Definition of Done (DoD)
-A PR is considered ready for review only if:
-- All new functionality is covered by either unit or integration tests.
-- All docs (especially `ARCHITECTURE.md`) have been updated to reflect behavioral changes.
-- A `dry-run` of the new logic was performed and verified.
+
+The consolidated Definition of Done for the project lives in
+[`docs/AGENT_WORKFLOW.md`](docs/AGENT_WORKFLOW.md#definition-of-done).

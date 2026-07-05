@@ -2,7 +2,7 @@
 
 This document is the architectural backbone of the project. It defines the
 terminology, the Source of Truth, the failure model, the hard security
-constraints, and the extension points that keep `able. Read it
+constraints, and the extension points that keep the engine hackable. Read it
 before extending the engine or writing manifests.
 
 ## Overview
@@ -10,7 +10,7 @@ before extending the engine or writing manifests.
 This project implements a declarative, idempotent system for managing user
 dotfiles, packages, and custom scripts across Linux environments. It uses a
 **Public Engine / Private Configuration** split to balance reusability with
-security: the engine and docmentation live in a public repository, while
+security: the engine and documentation live in a public repository, while
 host-specific and user-specific configuration lives in a separate private
 repository.
 
@@ -162,32 +162,7 @@ overlay directory and per-host variable injection, enabling declarations like
 
 ## Alternatives Considered (ADR)
 
-### ADR-001: Python over Rust / Go for the CLI engine
+Architecture Decision Records are stored in [`docs/adr/`](docs/adr/):
 
-- **Context:** we need a CLI engine that is easy to write, maintain, and test in
-  clean Ubuntu installations and virtualized environments.
-- **Decision:** implement the engine in **Python 3.10+**, using `click` for CLI
-  argument parsing and `questionary` for interactive prompts.
-- **Consequences:**
-  - *Pros:* Python is present by default on modern Ubuntu, keeps the engine
-    hackable by non-systems developers, and integrates naturally with
-    YAML/JSON manifests. Bootstrap dependencies (`click`, `questionary`,
-    `pyyaml`) install via a lightweight pip bootstrap step.
-  - *Cons:* slightly lower runtime performance than a compiled binary; hot
-    paths can be ported to Rust later via PyO3 if profiling shows it is needed.
-    The manifest schema and Stow semantics are portable either way.
-
-### ADR-002: GNU Stow over `chezmoi` / `yadm` / `Ansible`
-
-- **Context:** symlinking is the core mechanism for applying config files; writing
-  a custom, bug-free symlink orchestrator from scratch is error-prone.
-- **Decision:** orchestrate symlinks with **GNU Stow**.
-- **Consequences:**
-  - *Pros:* a single-purpose symlink tool with no daemon, no imperative
-    playbooks, and a trivial mental model. `chezmoi` and `yadm` couple
-    encryption and templating to the manager, which adds surface area and
-    makes the "public engine / private config" split harder to reason about.
-    Ansible is a full orchestration framework — overkill for per-user
-    dotfiles. Stow is already packaged on every target distro.
-  - *Cons:* adds `stow` as a required package in the bootstrap phase (easily
-    installed via `apt install stow`).
+- [ADR-001: Python over Rust / Go](docs/adr/ADR-001-python-over-rust.md)
+- [ADR-002: GNU Stow over `chezmoi` / `yadm` / `Ansible`](docs/adr/ADR-002-gnu-stow-over-chezmoi.md)

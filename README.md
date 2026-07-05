@@ -45,6 +45,31 @@ To read the project context:
 
 When the CLI lands, installation will be documented here.
 
+## Development Setup
+
+```bash
+# Clone the repository
+git clone git@github.com:diserere/dotmgr.git
+cd dotmgr
+
+# Create and activate a virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install the package in editable mode with dev dependencies
+pip install -e .
+pip install pytest ruff mypy
+
+# Install pre-commit hooks (optional but recommended)
+pip install pre-commit
+pre-commit install
+
+# Run checks
+ruff check src/ tests/
+mypy src/
+pytest
+```
+
 ## Documentation
 
 Read these files in order to recover full project context:
