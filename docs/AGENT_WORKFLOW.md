@@ -13,6 +13,19 @@ requires explicit human approval via the tool-execution prompt.
 
 The human maintains ultimate authority and may override any agent decision.
 
+## Agent Constraints
+
+- **Environment isolation:** the agent must not modify the host system (install
+  packages, alter system config, write outside the repository) without explicit
+  human approval. If the environment lacks the tools needed for a task, the
+  agent must stop and report the issue to the human rather than resorting to
+  workarounds that alter the host.
+- **Non-read-only guard:** any non-read-only operation requires explicit human
+  approval via the tool-execution prompt, as stated in Human-in-the-loop above.
+- **Scope confinement:** the agent operates within the repository working tree
+  unless instructed otherwise. System-wide changes (e.g. `apt install`,
+  `pip --break-system-packages`) are never autonomous.
+
 ## Agent review cycle
 
 1. **Author agent** opens a PR with changes.
