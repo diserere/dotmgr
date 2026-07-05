@@ -1,6 +1,6 @@
 # ADR-002: GNU Stow over `chezmoi` / `yadm` / `Ansible`
 
-- **Date:** 2026-01-01
+- **Date:** 2026-07-06
 - **Status:** accepted
 
 ## Context

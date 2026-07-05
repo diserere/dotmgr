@@ -30,4 +30,4 @@
 
 The agent collaboration policy (human-in-the-loop, review cycle, roles, and the
 Definition of Done for agent-authored PRs) lives in
-[`docs/AGENT_WORKFLOW.md`](docs/AGENT_WORKFLOW.md).
+[`docs/AGENT_WORKFLOW.md`](AGENT_WORKFLOW.md).

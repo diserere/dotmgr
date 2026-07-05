@@ -162,7 +162,7 @@ overlay directory and per-host variable injection, enabling declarations like
 
 ## Alternatives Considered (ADR)
 
-Architecture Decision Records are stored in [`docs/adr/`](docs/adr/):
+Architecture Decision Records are stored in [`docs/adr/`](adr/):
 
-- [ADR-001: Python over Rust / Go](docs/adr/ADR-001-python-over-rust.md)
-- [ADR-002: GNU Stow over `chezmoi` / `yadm` / `Ansible`](docs/adr/ADR-002-gnu-stow-over-chezmoi.md)
+- [ADR-001: Python over Rust / Go](adr/ADR-001-python-over-rust.md)
+- [ADR-002: GNU Stow over `chezmoi` / `yadm` / `Ansible`](adr/ADR-002-gnu-stow-over-chezmoi.md)

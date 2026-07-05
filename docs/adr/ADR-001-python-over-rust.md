@@ -1,6 +1,6 @@
 # ADR-001: Python over Rust / Go for the CLI Engine
 
-- **Date:** 2026-01-01
+- **Date:** 2026-07-06
 - **Status:** accepted
 
 ## Context

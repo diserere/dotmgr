@@ -3,7 +3,7 @@
 This roadmap tracks the path from documentation-only to a working `dotmgr`
 engine. Each phase is a self-contained milestone; phases build on the previous
 one. Terminology follows the glossary in
-[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — "block" is the canonical term
+[`docs/ARCHITECTURE.md`](ARCHITECTURE.md) — "block" is the canonical term
 for an atomic configuration unit.
 
 ## Pre-Phase 0: Infrastructure & Consolidation (✓ Completed)

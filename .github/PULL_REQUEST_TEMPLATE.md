@@ -21,6 +21,7 @@
   - [ ] `docs/CONTEXT_AS_CODE.md`
 - [ ] Commit messages follow Conventional Commits with `Co-Authored-By` trailer
 - [ ] Documentation is in English
+- [ ] CI pipeline passes successfully
 - [ ] Dry-run was performed and verified (where applicable)
 
 ## Review notes

@@ -20,4 +20,4 @@ This document outlines the testing approach for the dotfile manager, ensuring ro
 ## Definition of Done (DoD)
 
 The consolidated Definition of Done for the project lives in
-[`docs/AGENT_WORKFLOW.md`](docs/AGENT_WORKFLOW.md#definition-of-done).
+[`docs/AGENT_WORKFLOW.md`](AGENT_WORKFLOW.md#definition-of-done).

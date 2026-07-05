@@ -2,7 +2,7 @@
 
 This document defines the policy for how AI agents collaborate with humans on
 this repository. It is **not** a general contribution guide — for branching,
-commits, and language rules see [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md).
+commits, and language rules see [`docs/CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Human-in-the-loop
 
@@ -73,6 +73,7 @@ A PR is ready for review only if:
   description.
 - [ ] All docs (especially `docs/ARCHITECTURE.md`) have been updated to reflect
   behavioral changes.
+- [ ] CI pipeline passes successfully.
 
 ## Review Provenance
 All PR review comments (from AI or Human) MUST be marked with a prefix:
