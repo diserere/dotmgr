@@ -26,24 +26,8 @@
 
 - Use [Semantic Versioning](https://semver.org) (SemVer) for the project.
 
-## Review Provenance
-All PR review comments must be marked with a prefix (e.g., [agent-review], [human-review]).
-
 ## Agent Workflow
 
 The agent collaboration policy (human-in-the-loop, review cycle, roles, and the
 Definition of Done for agent-authored PRs) lives in
-[`docs/AGENT_WORKFLOW.md`](docs/AGENT_WORKFLOW.md). In short: the agent
-autonomously executes read-only operations; any non-read-only operation
-requires explicit human approval via the tool-execution prompt. The human
-maintains ultimate authority and may override any agent decision.
-
-## Agent Roles
-
-To ensure systematic development, assign roles to agents at the start of a session:
-
-- **Architect:** Responsible for `ARCHITECTURE.md`, `ADRs`, and high-level design consistency.
-- **Author:** Implements code/docs and creates PRs.
-- **Reviewer:** Conducts structured reviews (Security, Architecture, Clarity) using `COMMENT`/`REQUEST_CHANGES`.
-- **QA/Tester:** Develops and executes integration tests (e.g., in Docker), validates `dry-run` results.
-- **MITM (Human):** Final gatekeeper. Approves/Rejects PRs and resolves conflicts between agent roles.
+[`docs/AGENT_WORKFLOW.md`](AGENT_WORKFLOW.md).

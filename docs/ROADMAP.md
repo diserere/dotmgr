@@ -3,8 +3,19 @@
 This roadmap tracks the path from documentation-only to a working `dotmgr`
 engine. Each phase is a self-contained milestone; phases build on the previous
 one. Terminology follows the glossary in
-[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — "block" is the canonical term
+[`docs/ARCHITECTURE.md`](ARCHITECTURE.md) — "block" is the canonical term
 for an atomic configuration unit.
+
+## Pre-Phase 0: Infrastructure & Consolidation (✓ Completed)
+
+- [x] Define Python project skeleton (`pyproject.toml`, `src/` layout).
+- [x] Set up tooling: `ruff` (lint/format), `mypy` (typecheck), `pytest`.
+- [x] Add development infrastructure (`.gitignore`, `.pre-commit-config.yaml`,
+  `.github/workflows/ci.yml`, PR template).
+- [x] Consolidate Definition of Done into `docs/AGENT_WORKFLOW.md`.
+- [x] Extract inline ADRs into standalone files in `docs/adr/`.
+- [x] Fix inconsistencies and typos across documentation.
+- [x] Establish ADR template and conventions.
 
 ## Phase 1: MVP (Core Engine)
 
