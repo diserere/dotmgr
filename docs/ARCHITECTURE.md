@@ -26,7 +26,9 @@ part of the Definition of Done for any PR.
 
 1. **Desired State (Manifest):** `manifest.yaml` in the private configuration
    repository is the **absolute source of truth**. It defines what should be
-   installed and configured.
+   installed and configured. See [`docs/manifest-schema-v1.md`](manifest-schema-v1.md)
+   for the full schema reference and [`schemas/manifest-v1.json`](../schemas/manifest-v1.json)
+   for the JSON Schema used for validation.
 2. **Observed/Local State (`installed.json`):** This is a performance cache,
    not a source of truth. The CLI uses it to detect drift and optimize
    performance, but the manifest always overrides it during `sync`

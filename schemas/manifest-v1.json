@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/diserere/dotmgr/schemas/manifest-v1.json",
+  "title": "dotmgr Manifest v1",
+  "description": "Schema for dotmgr manifest.yaml — the absolute source of truth for desired system state.",
+
+  "type": "object",
+  "required": ["schema_version", "blocks"],
+  "properties": {
+    "schema_version": {
+      "description": "Manifest schema version. Bumped on backward-incompatible changes. Independent of project SemVer.",
+      "type": "integer",
+      "const": 1
+    },
+
+    "blocks": {
+      "description": "Ordered list of configuration blocks. Each block is an atomic Stow package.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "description": "Unique block identifier. Used as the Stow package name and as argument to `dotmgr apply <name>`.",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]+$"
+          },
+
+          "description": {
+            "description": "Human-readable description of what this block configures.",
+            "type": "string"
+          },
+
+          "enabled": {
+            "description": "Toggle block on/off without removing it from the manifest. Default: true.",
+            "type": "boolean",
+            "default": true
+          },
+
+          "stow": {
+            "description": "Stow-managed symlink configuration. Maps a directory in the private repo to a target location.",
+            "type": "object",
+            "properties": {
+              "source": {
+                "description": "Directory name (Stow package) inside the private repo's dotfiles directory. E.g. 'zsh' maps to <private-repo>/dotfiles/zsh/.",
+                "type": "string",
+                "pattern": "^[a-zA-Z0-9_-]+$"
+              },
+              "target": {
+                "description": "Target directory for symlinks. Default: ~ (home directory).",
+                "type": "string",
+                "default": "~"
+              }
+            },
+            "required": ["source"]
+          },
+
+          "file_permissions": {
+            "description": "File permission rules applied after Stow creates symlinks. Each rule sets the mode of files matching a glob pattern inside the stow source directory. Symlink targets inherit these permissions from the source files.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["pattern", "mode"],
+              "properties": {
+                "pattern": {
+                  "description": "Glob pattern matching files relative to the stow source directory. E.g. '**/*.sh' for shell scripts, 'bin/*' for files under bin/, '**/*' for all files.",
+                  "type": "string"
+                },
+                "mode": {
+                  "description": "Octal permission mode string. E.g. '755' for executable, '644' for readable.",
+                  "type": "string",
+                  "pattern": "^[0-7]{3,4}$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+
+          "packages": {
+            "description": "Package declarations keyed by provider name. Each provider lists packages to install.",
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": false,
+            "properties": {
+              "apt": {
+                "description": "APT packages (Ubuntu/Debian). Installed via apt-get.",
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "description": "Simple package name.",
+                      "type": "string"
+                    },
+                    {
+                      "description": "Package with version/options.",
+                      "type": "object",
+                      "required": ["name"],
+                      "properties": {
+                        "name": { "type": "string" },
+                        "version": { "type": "string" },
+                        "state": {
+                          "type": "string",
+                          "enum": ["present", "latest", "absent"],
+                          "default": "present"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "uniqueItems": true
+              },
+              "pip": {
+                "description": "Python packages. Installed via pip.",
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    { "type": "string" },
+                    {
+                      "type": "object",
+                      "required": ["name"],
+                      "properties": {
+                        "name": { "type": "string" },
+                        "version": { "type": "string" },
+                        "state": {
+                          "type": "string",
+                          "enum": ["present", "latest", "absent"],
+                          "default": "present"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "uniqueItems": true
+              }
+            }
+          },
+
+          "tasks": {
+            "description": "Arbitrary shell commands to execute as part of block application. Runs after packages and Stow.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name", "command"],
+              "properties": {
+                "name": {
+                  "description": "Human-readable task name. Used in logs and error messages.",
+                  "type": "string"
+                },
+                "command": {
+                  "description": "Shell command to execute. Runs via sh -c.",
+                  "type": "string"
+                },
+                "when": {
+                  "description": "Optional condition expression. If present and evaluates to falsy, the task is skipped. Syntax TBD (Phase 3).",
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+
+          "condition": {
+            "description": "Host selection condition. If present and evaluates to false, the entire block is skipped. Syntax TBD (Phase 3 — HierarchicalHostResolver).",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "anyOf": [
+          { "required": ["stow"] },
+          { "required": ["packages"] },
+          { "required": ["tasks"] }
+        ]
+      }
+    }
+  },
+
+  "additionalProperties": false
+}

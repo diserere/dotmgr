@@ -19,7 +19,7 @@ for an atomic configuration unit.
 
 ## Phase 1: MVP (Core Engine)
 
-- [ ] Define `manifest.yaml` schema (version 1).
+- [x] Define `manifest.yaml` schema (version 1).
 - [ ] Implement `dotmgr` CLI scaffolding (Python, `click`, `questionary`).
 - [ ] Implement `init` command (clone and record the private repo connection).
 - [ ] Implement basic `apply` command (Stow functionality for one block).
