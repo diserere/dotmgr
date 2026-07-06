@@ -56,6 +56,27 @@
             "required": ["source"]
           },
 
+          "file_permissions": {
+            "description": "File permission rules applied after Stow creates symlinks. Each rule sets the mode of files matching a glob pattern inside the stow source directory. Symlink targets inherit these permissions from the source files.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["pattern", "mode"],
+              "properties": {
+                "pattern": {
+                  "description": "Glob pattern matching files relative to the stow source directory. E.g. '**/*.sh' for shell scripts, 'bin/*' for files under bin/, '**/*' for all files.",
+                  "type": "string"
+                },
+                "mode": {
+                  "description": "Octal permission mode string. E.g. '755' for executable, '644' for readable.",
+                  "type": "string",
+                  "pattern": "^[0-7]{3,4}$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+
           "packages": {
             "description": "Package declarations keyed by provider name. Each provider lists packages to install.",
             "type": "object",

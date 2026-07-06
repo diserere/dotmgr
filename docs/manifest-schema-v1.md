@@ -42,6 +42,7 @@ Blocks are applied in the order they appear in the manifest.
 | `description` | string | no | — | Human-readable description. |
 | `enabled` | boolean | no | `true` | Toggle block on/off without removing it from the manifest. |
 | `stow` | object | no* | — | Stow symlink configuration. |
+| `file_permissions` | array | no | — | Permission rules applied after Stow (requires `stow`). |
 | `packages` | object | no* | — | Package declarations per provider. |
 | `tasks` | array | no* | — | Custom shell tasks. |
 | `condition` | string | no | — | Host condition expression (Phase 3, currently ignored). |
@@ -87,6 +88,41 @@ private-repo/
                 ├── init.lua
                 └── lua/
 ```
+
+---
+
+### `file_permissions` array
+
+Post-processing rules that set file permissions after Stow creates symlinks.
+Symlinks themselves inherit permissions from the files they point to, so these
+rules modify the **source files** inside the private repository.
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| `pattern` | string | yes | — | Glob pattern relative to the stow source directory. E.g. `**/*.sh`, `bin/*`, `**/*`. |
+| `mode` | string | yes | — | Octal permission mode. E.g. `755` for executable, `644` for readable. Pattern: `^[0-7]{3,4}$`. |
+
+**Example:**
+```yaml
+blocks:
+  - name: scripts
+    description: Custom scripts in PATH
+    stow:
+      source: scripts
+      target: ~/.local/bin
+    file_permissions:
+      - pattern: "**/*"
+        mode: "755"
+      - pattern: "**/*.py"
+        mode: "644"
+```
+
+This is equivalent to running `chmod -R 755` on all files in the scripts
+package, then `chmod 644` on all `.py` files. Order matters — rules execute
+in array order, so later rules can override earlier ones.
+
+See [ADR-002](adr/ADR-002-gnu-stow-over-chezmoi.md) for why Stow was chosen
+over alternative symlink managers.
 
 ---
 
@@ -210,6 +246,15 @@ blocks:
       pip:
         - pynvim
 
+  - name: scripts
+    description: Custom scripts in PATH
+    stow:
+      source: scripts
+      target: ~/.local/bin
+    file_permissions:
+      - pattern: "**/*"
+        mode: "755"
+
   - name: dev-utils
     description: Common development tools
     packages:
@@ -229,7 +274,7 @@ blocks:
 
 ## Backward Compatibility
 
-- **Additions** to the schema (new optional fields, new providers) are
-  backward-compatible.
+- **Additions** to the schema (new optional fields like `file_permissions`,
+  new providers) are backward-compatible.
 - **Removals** or **type changes** require a `schema_version` bump.
 - The engine must reject manifests with an unknown (higher) `schema_version`.
