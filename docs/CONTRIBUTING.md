@@ -19,8 +19,21 @@
   e.g. `Co-Authored-By: Claude <noreply@anthropic.com> [Role: Author]`.
   This is required, not optional, so the provenance and responsibility of
   agent-assisted work is always auditable.
-- **Merging:** use fast-forward (`--ff-only`) locally to maintain a clean
-  linear history. Avoid merge commits.
+- **Merging (local merge workflow):**
+  1. Open a Pull Request on GitHub for review and tracking.
+  2. After approval, merge locally into `main` — this preserves the full
+     commit history from the topic branch:
+     ```
+     git checkout main
+     git merge <branch-name>
+     git push
+     ```
+  3. GitHub automatically detects the merge and closes the PR.
+  4. Delete the topic branch: `git branch -d <branch-name>`.
+  - The merge strategy is **default `git merge`** (no `--ff-only`, no
+    `--squash`). This produces a fast-forward when `main` has not diverged,
+    or a merge commit when it has. The goal is to **preserve history**, not
+    to squash it into a single commit.
 
 ## Versioning
 
